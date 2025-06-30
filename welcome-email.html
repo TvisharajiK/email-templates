@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to Keploy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+    .email-wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 48px 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+      text-align: left;
+    }
+    .header {
+      text-align: left;
+      margin-bottom: 24px;
+    }
+    .header img {
+      max-width: 160px;
+      margin-bottom: 16px;
+    }
+    .headline {
+      font-size: 26px;
+      font-weight: 700;
+      color: #f97316;
+    }
+    .subheadline {
+      font-size: 18px;
+      margin-top: 8px;
+      color: #374151;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .message {
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 24px 0;
+      color: #4b5563;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: #f97316;
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 32px;
+      text-align: center;
+    }
+    .visual {
+      margin-top: 32px;
+      text-align: left;
+    }
+    .visual img {
+      max-width: 60%;
+      border-radius: 12px;
+    }
+    .footer {
+      font-size: 12px;
+      color: #9ca3af;
+      text-align: left;
+      margin-top: 40px;
+    }
+    .footer a {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 640px) {
+      .email-wrapper {
+        padding: 32px 20px;
+      }
+      .headline {
+        font-size: 26px;
+      }
+      .subheadline {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="header">
+      <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo" />
+<!--      <div class="headline">Welcome to Keploy</div>-->
+      <div class="subheadline ">Thanks for signing up. Let’s generate your first test in under a minute.</div>
+    </div>
+
+    <div class="message">
+      Keploy converts your API calls into real, runnable test cases. Just paste your OpenAPI spec, Postman collection, or start capturing traffic – and we’ll generate edge-case covered tests ready to run anywhere (local or CI).
+    </div>
+    <div class="visual">
+      <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/welcome_keploy_signup.png" alt="Keploy Mascot" />
+    </div>
+
+    <a href="https://app.keploy.io/" class="cta-button">Generate My First Test</a>
+
+    <div>
+    </div>
+
+    <div class="footer">
+      <p style="margin: 0 0 8px;">Keploy is fastest growing AI-powered testing on Earth.</p>
+      <p style="margin: 0;">
+        <a href="https://keploy.io">keploy.io</a> |
+        <a href="https://twitter.com/keployio">@keployio</a> |
+        <a href="https://github.com/keploy/keploy">open-source</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

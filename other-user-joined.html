@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{User} joined {Company} – Keploy</title>
+  <style>
+    /* ------ Reset & base ------ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 0;
+      color: #1f2937;
+    }
+
+    /* ------ Card ------ */
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2.25rem 2.75rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+    .card img {
+      width: 108px;
+      margin-bottom: 1.25rem;
+    }
+    .card h1 {
+      font-size: 1.55rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+    .intro {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #475569;
+    }
+
+    /* ------ How-to box ------ */
+    .howto {
+      background: #fef3c7;
+      color: #854d0e;
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+      text-align: left;
+      margin-bottom: 1.75rem;
+      font-size: 0.95rem;
+    }
+    .howto h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .howto ol {
+      padding-left: 1.15rem;
+    }
+    .howto li {
+      margin-bottom: 0.45rem;
+    }
+
+    /* ------ CTA button ------ */
+    .button {
+      display: inline-block;
+      background-color: #f97316;
+      color: #ffffff;
+      padding: 0.78rem 1.55rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color .25s ease;
+    }
+    .button:hover { background-color: #ea580c; }
+
+    /* ------ Footer ------ */
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.95rem;
+      color: #475569;
+    }
+    .footer a {
+      color: #f97316;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ------ Responsive tweaks ------ */
+    @media (max-width: 480px) {
+      .card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Logo -->
+    <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy logo">
+
+    <!-- Greeting -->
+    <h1>{User} just joined <br>{Company} on Keploy 🎉</h1>
+    <p class="intro">
+      Welcome them to the team by kicking things off with a shared test suite.
+    </p>
+
+    <!-- How to share tests -->
+    <div class="howto">
+      <h2>How to share tests</h2>
+      <ol>
+        <li>Open Keploy CLI or Dashboard in your project.</li>
+        <li>Select the tests you’d like to share.</li>
+        <li>Click <strong>“Share”</strong> &gt; choose teammates or workspace.</li>
+      </ol>
+    </div>
+
+    <!-- CTA -->
+    <a href="{share_tests_url}" class="button">🚀 Share tests now</a>
+
+    <!-- Docs link & support -->
+    <div class="footer">
+      Need a deeper dive? Check the
+      <a href="https://keploy.io/docs/running-keploy/share-tests/" target="_blank">Keploy docs ↗</a><br>
+      or email <a href="mailto:support@keploy.io">support@keploy.io</a>
+    </div>
+  </div>
+</body>
+</html>

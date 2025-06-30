@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Still need help generating tests?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Core styles (unchanged) */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 48px 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+      text-align: left;
+    }
+    .header { margin-bottom: 24px; }
+    .header img { width: 120px; }
+
+    /* Updated headline + text */
+    .headline {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f97316;
+      margin-top: 24px;
+    }
+    .body-text {
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 20px 0;
+      color: #374151;
+    }
+
+    /* Checklist / steps */
+    .checklist { padding-left: 18px; margin-bottom: 24px; }
+    .li { margin-top: 20px; }
+
+    /* CTAs */
+    .cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #f97316;
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    /* Visual */
+    .visual { margin-top: 32px; text-align: left; }
+    .visual img {
+      max-width: 60%;
+      border-radius: 12px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: left;
+    }
+    .footer a {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Brand -->
+    <div class="header">
+      <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo" />
+    </div>
+
+    <!-- New headline -->
+    <div class="headline">Still need a hand?</div>
+
+    <!-- Updated message -->
+    <p class="body-text">
+      Just checking in after our last note. We noticed tests still haven’t appeared in your project.
+      No worries—let’s get your first suite up and running together. Most teams are unblocked in
+      under 5 minutes with the steps below.
+    </p>
+
+    <!-- Visual remains -->
+    <div class="visual">
+      <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy_Test_Not_Generated.png" alt="Keploy Mascot" />
+    </div>
+
+    <!-- Revised quick-start checklist -->
+    <p class="body-text" style="margin-top:24px;">Quick win checklist:</p>
+    <ul class="checklist">
+      <li class="li">✅ Point Keploy to the <strong>exact API base URL</strong> (e.g. <code>https://api.myapp.com</code>).</li>
+      <li class="li">✅ Run <code>Generate Tests</code> after adding your schema and cURLs</li>
+    </ul>
+
+    <!-- Primary CTA -->
+    <a href="{app_url}" class="cta-button">Generate tests now</a>
+
+    <!-- Secondary resources -->
+    <p class="body-text" style="margin-top: 18px;">
+      Need to dig deeper? <a href="https://keploy.io/docs/running-keploy/generate-api-tests-using-ai/" style="color:#f97316;font-weight:600;">Read the docs</a>
+    </p>
+
+    <!-- Support options -->
+    <p class="body-text" style="margin-top: 12px;">
+      Still stuck? <a href="https://join.slack.com/t/keploy/shared_invite/zt-357qqm9b5-PbZRVu3Yt2rJIa6ofrwWNg" style="color:#f97316;font-weight:600;">Chat with us</a>
+      or <a href="https://calendar.app.google/cXVaj6hbMUjvmrnt9" style="color:#f97316;font-weight:600;">book a quick call</a>.
+    </p>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Keploy is open-source, AI-powered testing for developers.</p>
+      <p style="margin: 0;">
+        <a style="margin-left: 0" href="https://keploy.io">keploy.io</a> |
+        <a href="https://twitter.com/keployio">@keployio</a> |
+        <a href="https://linkedin.com/company/keploy/">LinkedIn</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

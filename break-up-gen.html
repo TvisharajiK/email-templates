@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Is this goodbye?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 48px 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+      text-align: left;
+    }
+    .header { margin-bottom: 24px; }
+    .header img { width: 120px; }
+    .headline {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f97316;
+      margin-top: 24px;
+    }
+    .body-text {
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 20px 0;
+      color: #374151;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #f97316;
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: left;
+    }
+    .footer a {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Brand -->
+    <div class="header">
+      <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo" />
+    </div>
+
+    <!-- Break-up headline -->
+    <div class="headline">Should we stop bugging you?</div>
+
+    <!-- Message -->
+    <p class="body-text">
+      Hey {First Name},
+      <br/><br/>
+      We’ve reached out a couple of times about generating tests with Keploy but haven’t heard back.  
+      Totally okay—everyone’s busy and priorities shift.
+    </p>
+    <p class="body-text">
+      If automated, AI-powered tests still sound interesting, just click the orange button below and we’ll pick up where we left off.  
+    </p>
+
+    <!-- Last-chance CTA -->
+    <a href="{app_url}" class="cta-button">Yes, let’s generate tests</a>
+
+    <!-- Polite close -->
+    <p class="body-text" style="margin-top:18px;">
+      Not the right time? No action needed—we won’t email again.  
+      You can always find us later at <a href="https://app.keploy.io" style="color:#f97316;font-weight:600;">app.keploy.io</a>.
+    </p>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Keploy – open-source, AI-powered testing for developers.</p>
+      <p style="margin:0;">
+        <a style="margin-left:0" href="https://keploy.io">keploy.io</a> |
+        <a href="https://twitter.com/keployio">@keployio</a> |
+        <a href="https://linkedin.com/company/keploy/">LinkedIn</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

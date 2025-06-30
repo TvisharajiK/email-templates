@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Summary Report</title>
+  <style>
+   * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 60%;
+  max-width: 1500px;
+  align-items: center;
+  padding: 2rem 1rem 0.5rem;
+}
+
+.header img {
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/* Shared wrapper for Bento, Failures, and CTA */
+.grid-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.grid-wrapper > * {
+  width: 100%;
+  max-width: 60vw;
+}
+
+@media screen and (max-width: 1000px) {
+  .grid-wrapper > * {
+    max-width: 90vw;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 1.5vw;
+  padding: 1vw;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    "hero hero hero hero aside2 aside2"
+    "hero hero hero hero aside2 aside2"
+    "hero hero hero hero aside2 aside2"
+    "hero hero hero hero aside2 aside2"
+    "aside3 aside3 aside4 aside4 aside4 aside4";
+}
+
+.item {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.item h2 {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.item .label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.item p {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+.hero    { grid-area: hero; }
+.aside2  { grid-area: aside2; }
+.aside3  { grid-area: aside3; }
+.aside4  { grid-area: aside4; }
+
+.green h2 {
+  color: #16a34a;
+}
+
+.red h2 {
+  color: #ef4444;
+}
+
+.dark {
+  background-color: #1f2937;
+  color: white;
+}
+
+/* Key Failures */
+.failures {
+  width: 100%;
+}
+
+.failures h3 {
+  margin-bottom: 1rem;
+}
+
+.failure-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  flex-wrap: nowrap;
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.failure-text {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.failure-text strong {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.failure-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* CTA Button */
+.cta {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.cta button {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Tablet View */
+@media screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "hero    aside2"
+      "aside3  aside4";
+  }
+
+  .failure-item {
+    flex-wrap: wrap;
+  }
+
+  .failure-text {
+    width: 100%;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+    width: 90%;
+  }
+    .header img {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Mobile View */
+@media screen and (max-width: 600px) {
+    .header {
+  width: 100%;
+    }
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "hero"
+      "aside2"
+      "aside3"
+      "aside4";
+  }
+
+  .item h2 {
+    font-size: 1.8rem;
+  }
+
+  .failure-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .icon {
+    margin-bottom: 0.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+  }
+    .header img {
+        margin-bottom: 0.5rem;
+    }
+
+}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Logo" />
+    <h1>Petclinic Test Suite Report</h1>
+    <p style="margin: 1rem 0 1rem; font-size: 1rem; color: #4b5563;">
+      You’ve received a detailed report from <strong>[Sender Name]</strong> on the latest API tests for the app <strong>Petclinic</strong>.
+    </p>
+    <h2>Summary</h2>
+  <p style="margin: 0.5rem 0 1rem; font-size: 1rem; color: #4b5563;">
+    Below is the summary of the latest API test results for the <strong>Petclinic</strong> app.
+  </p>
+  </div>
+
+
+  <div class="grid-wrapper">
+    <div class="grid">
+      <div class="item hero dark">
+        <div class="label">Total Test Cases in Report</div>
+        <p>Total tests executed during this run.</p>
+      </div>
+
+      <div class="item aside2 green">
+        <h2>62</h2>
+        <div class="label">Passed Test Cases</div>
+        <p>These tests ran successfully without any errors</p>
+      </div>
+
+      <div class="item aside3">
+        <h2>62</h2>
+        <div class="label">Total Test Cases</div>
+        <p>Test cases validated expected behavior.</p>
+      </div>
+
+      <div class="item aside4 red">
+        <h2>62</h2>
+        <div class="label">Failed Test Cases</div>
+        <p>Test cases failed, indicating issues requiring attention.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-wrapper">
+    <div class="failures">
+      <h3>Key Failures</h3>
+
+      <div class="failure-item">
+        <span class="icon">❌</span>
+        <div class="failure-text">
+          <strong>Failing_Endpoint_Test</strong>
+          <p>The /oops endpoint returned unexpected status code 500.</p>
+        </div>
+      </div>
+
+      <div class="failure-item">
+        <span class="icon">➖</span>
+        <div class="failure-text">
+          <strong>User_Create_Empty_Username</strong>
+          <p>Validation did not catch an empty username.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-wrapper">
+    <div class="cta">
+      <p style="text-align: center; margin-bottom: 1rem; font-size: 0.95rem; color: #6b7280;">
+        If you have any questions, contact <a href="mailto:support@keploy.io" style="color: #f97316; text-decoration: none;">support@keploy.io</a>
+      </p>
+      <button>View Detailed Report</button>
+    </div>
+  </div>
+
+</body>
+</html>

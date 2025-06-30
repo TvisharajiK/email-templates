@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Still need to run your tests?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ---- Base ---- */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 48px 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+    }
+    .logo { width: 120px; margin-bottom: 24px; }
+
+    /* ---- Headline & text ---- */
+    .headline {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f97316;
+      margin: 0 0 18px;
+    }
+    .body-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #374151;
+      margin: 16px 0;
+    }
+
+    /* ---- Checklist ---- */
+    .steps { padding-left: 18px; margin: 16px 0 24px; }
+    .steps li { margin-top: 12px; }
+
+    /* ---- CTA ---- */
+    .cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #f97316;
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+
+    /* ---- Visual ---- */
+    .image img {
+      max-width: 100%;
+      border-radius: 12px;
+      display: block;
+      margin: 24px auto 0;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: left;
+    }
+    .footer a {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <img class="logo" src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo" />
+
+    <!-- Headline -->
+    <div class="headline">Still haven’t pressed “Run”?</div>
+
+    <!-- Message -->
+    <p class="body-text">
+      We noticed your test suite is waiting patiently. Running it now will catch regressions
+      before they ship and give you an instant pass/fail report.
+    </p>
+
+    <!-- Quick-start list -->
+    <p class="body-text" style="margin-bottom:6px;">Run tests in 3 quick steps:</p>
+    <ol class="steps">
+      <li>Open your terminal in the project root.</li>
+      <li>Run <code>keploy test --run</code> or click “Run” on the dashboard.</li>
+      <li>View the detailed HTML report generated in seconds.</li>
+    </ol>
+
+    <!-- Illustration -->
+    <div class="image">
+      <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/run_tests_followup.png"
+           alt="Run tests illustration" />
+    </div>
+
+    <!-- CTA -->
+    <a href="{app_url}" class="cta-button">Run Tests Now</a>
+
+    <!-- Help links -->
+    <p class="body-text" style="margin-top:18px;">
+      Need a hand? <a href="https://join.slack.com/t/keploy/shared_invite/zt-357qqm9b5-PbZRVu3Yt2rJIa6ofrwWNg" style="color:#f97316;font-weight:600;">Chat with us</a>
+      or <a href="https://docs.keploy.io" style="color:#f97316;font-weight:600;">read the docs</a>.
+    </p>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p style="margin:0 0 8px;">Keploy – AI-powered testing for developers.</p>
+      <p style="margin:0;">
+        <a style="margin-left:0" href="https://keploy.io">keploy.io</a> |
+        <a href="https://twitter.com/keployio">@keployio</a> |
+        <a href="https://linkedin.com/company/keploy/">LinkedIn</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
