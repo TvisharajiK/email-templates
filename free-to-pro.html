@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your free credits are out</title>
+
+  <!-- Inter everywhere -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---- Base ---- */
+    body {
+      font-family: 'Inter', sans-serif;   /* brand font :contentReference[oaicite:0]{index=0} */
+      background: #f8fafc;                /* subtle grey bg :contentReference[oaicite:1]{index=1} */
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+    .wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 56px 40px 48px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.05);  /* soft shadow :contentReference[oaicite:2]{index=2} */
+      text-align: center;                        /* centre, like the Zapier reference */
+    }
+
+    /* ---- Header logo ---- */
+    .logo { width: 150px; margin: 0 auto 32px; }
+
+    /* ---- Hero icon ---- */
+    .hero-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      margin: 0 auto 32px;
+      display: block;
+    }
+
+    /* ---- Headline ---- */
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      color: #000000;
+    }
+    .intro {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #374151;
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+
+    /* ---- CTA ---- */
+    .cta-btn {
+      display: inline-block;
+      background: #f97316;                /* brand orange CTA :contentReference[oaicite:3]{index=3} */
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 4px 0 52px;
+      transition: filter .2s ease;
+    }
+    .cta-btn:hover { filter: brightness(0.95); }
+
+    /* ---- Benefits grid ---- */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 28px 24px;
+      max-width: 540px;
+      margin: 0 auto 40px;
+      text-align: left;
+    }
+    .benefit h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 12px 0 8px;
+      color: #1f2937;
+    }
+    .benefit p {
+      font-size: 14px;
+      color: #4b5563;
+      margin: 0;
+      line-height: 1.55;
+    }
+    .benefit .icon {
+      font-size: 26px;
+      line-height: 1;
+      color: #f97316;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .footer a { color: #6b7280; text-decoration: none; font-weight: 500; margin: 0 6px; }
+
+    /* ---- Mobile tweaks ---- */
+    @media(max-width:640px){
+      .wrapper { padding: 40px 24px; }
+      h1      { font-size: 24px; }
+      .intro  { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Logo -->
+    <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo" class="logo">
+
+    <!-- Hero icon -->
+    <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/free-to.png" alt="" class="hero-icon">
+
+    <!-- Headline & intro -->
+    <h1>All free credits used</h1>
+    <p class="intro">
+      You’ve squeezed every drop out of your Playground plan—great job!  
+      Your existing tests remain safe, and fresh credits will land next month.  
+      Want to keep shipping confidently today? Upgrade to <strong>Team</strong> for unrestricted power.
+    </p>
+
+    <!-- Primary CTA -->
+    <a href="https://keploy.io/pricing" class="cta-btn">Explore Team plan</a>
+
+    <!-- Why upgrade -->
+    <h2 style="font-size:18px;font-weight:600;margin:0 0 24px;">Why go Team?</h2>
+    <div class="benefits">
+      <div class="benefit">
+        <span class="icon">👥</span>
+        <h3>3 seats included</h3>
+        <p>Collaborate with your squad out&nbsp;of&nbsp;the box—no extra add‑ons.</p>
+      </div>
+      <div class="benefit">
+        <span class="icon">🚀</span>
+        <h3>5× more testing</h3>
+        <p>1,000 suite generations &amp; 2,000 runs each month—plenty of room to breathe.</p>
+      </div>
+      <div class="benefit">
+        <span class="icon">🤖</span>
+        <h3>100 AI fixes</h3>
+        <p>Let Keploy auto‑patch flakies and assertion drifts so you stay focused on features.</p>
+      </div>
+      <div class="benefit">
+        <span class="icon">📊</span>
+        <h3>Basic analytics</h3>
+        <p>Track coverage, reliability, and test health at a glance.</p>
+      </div>
+      <div class="benefit">
+        <span class="icon">⚙️</span>
+        <h3>Parallel runners</h3>
+        <p>Two dedicated CI/CD runners slash feedback time on every PR.</p>
+      </div>
+      <div class="benefit">
+        <span class="icon">🔐</span>
+        <h3>RBAC &amp; support</h3>
+        <p>Role‑based access control and 24‑hour email help to keep your pipeline secure.</p>
+      </div>
+    </div>
+
+    <!-- Secondary CTA -->
+    <a href="https://keploy.io/pricing" class="cta-btn">Upgrade now</a>
+
+    <!-- Footer -->
+    <div class="footer">
+      Keploy – AI‑powered testing for developers.  
+      <a href="https://keploy.io">Website</a>|
+      <a href="https://twitter.com/keployio">@keployio</a>|
+      <a href="https://github.com/keploy/keploy">GitHub</a>
+    </div>
+  </div>
+</body>
+</html>

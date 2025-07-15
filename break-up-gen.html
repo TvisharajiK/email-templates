@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Is this goodbye?</title>
+  <title>Still not generating tests?</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -22,13 +22,13 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.07);
       text-align: left;
     }
-    .header { margin-bottom: 24px; }
     .header img { width: 120px; }
+    .meme   { width: 100%; border-radius: 12px; margin: 24px 0; }
     .headline {
       font-size: 24px;
       font-weight: 600;
       color: #f97316;
-      margin-top: 24px;
+      margin-top: 8px;
     }
     .body-text {
       font-size: 15px;
@@ -40,7 +40,7 @@
       display: inline-block;
       padding: 14px 24px;
       background-color: #f97316;
-      color: #ffffff;
+      color: #ffffff !important;
       font-weight: 600;
       text-decoration: none;
       border-radius: 8px;
@@ -67,27 +67,29 @@
       <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo" />
     </div>
 
-    <!-- Break-up headline -->
-    <div class="headline">Should we stop bugging you?</div>
+    <!-- Meme -->
+    <img class="meme" src="https://keploy-devrel.s3.us-west-2.amazonaws.com/test-gen-meme.png"
+         alt="Still don’t have API tests yet? (meme)" />
+
+    <!-- Headline -->
+    <div class="headline">Still not generating tests?</div>
 
     <!-- Message -->
     <p class="body-text">
       Hey {First Name},
       <br/><br/>
-      We’ve reached out a couple of times about generating tests with Keploy but haven’t heard back.  
-      Totally okay—everyone’s busy and priorities shift.
+      You set up Keploy but haven’t created your first API test suite yet.  
     </p>
     <p class="body-text">
-      If automated, AI-powered tests still sound interesting, just click the orange button below and we’ll pick up where we left off.  
+      Tap the orange button below and Keploy’s AI will spin up reliable tests in seconds—no scripts, no hassle.
     </p>
 
-    <!-- Last-chance CTA -->
-    <a href="{app_url}" class="cta-button">Yes, let’s generate tests</a>
+    <!-- CTA -->
+    <a href="https://app.keploy.io/api-testing/generate" class="cta-button">Generate my first tests →</a>
 
-    <!-- Polite close -->
+    <!-- Polite opt-out -->
     <p class="body-text" style="margin-top:18px;">
-      Not the right time? No action needed—we won’t email again.  
-      You can always find us later at <a href="https://app.keploy.io" style="color:#f97316;font-weight:600;">app.keploy.io</a>.
+      You can always jump back in at <a href="https://app.keploy.io" style="color:#f97316;font-weight:600;">app.keploy.io</a>.
     </p>
 
     <!-- Footer -->
