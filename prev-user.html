@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your first Keploy tests are waiting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Base ===== */
+    body{margin:0;padding:0;font-family:'Inter',sans-serif;background:#f8fafc;color:#1f2937;}
+    .wrapper{max-width:640px;margin:0 auto;background:#ffffff;padding:48px 36px;border-radius:18px;
+             box-shadow:0 6px 20px rgba(0,0,0,0.08);}
+    a{color:#f97316;text-decoration:none;font-weight:600;}
+    /* ===== Head ===== */
+    .logo{width:120px;}
+    .headline{font-size:26px;font-weight:600;color:#f97316;margin:24px 0 14px;}
+    .sub{font-size:16px;line-height:1.6;margin:0 0 24px;color:#374151;}
+    /* ===== Hero ===== */
+    .hero{width:100%;height:auto;border-radius:14px;display:block;margin:8px 0 24px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.04);}
+    /* ===== Progress bar ===== */
+    .bar-wrap{background:#f3f4f6;border-radius:10px;margin:24px 0;height:14px;overflow:hidden;}
+    .bar{background:#f97316;width:80%;height:100%;border-radius:10px;}
+    .bar-text{font-size:13px;font-weight:600;color:#374151;margin:6px 0 0;text-align:right;}
+    /* ===== CTA ===== */
+    .button{display:inline-block;background:#f97316;color:#ffffff;border-radius:10px;padding:16px 28px;
+            font-weight:600;font-size:15px;margin:16px 0 32px;}
+    /* ===== Footer ===== */
+    .footer{font-size:12px;color:#6b7280;margin-top:40px;text-align:left;}
+    .footer a{color:#6b7280;font-weight:500;margin:0 8px;}
+    /* ===== Responsive ===== */
+    @media(max-width:480px){
+      .wrapper{padding:32px 22px;}
+      .headline{font-size:22px;}
+      .button{width:100%;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+<!-- Logo -->
+<img class="logo" src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo"/>
+
+
+
+<!-- Headline -->
+<div class="headline" style="margin-top:14px;">Click “Generate.” Watch a suite appear.</div>
+
+<!-- Subhead (natural) -->
+<p class="sub" style="font-size:17px;margin-top:4px;">
+  Keploy builds a usable test suite from the API calls you already make—sensible assertions, edge cases, and CI checks. 
+</p>
+
+<!-- UI-style “aha” hero (static preview, not a second CTA) -->
+<div style="border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;margin:10px 0 20px;background:#fff;">
+  <!-- Header -->
+  <div style="display:flex;gap:10px;align-items:center;padding:12px;border-bottom:1px solid #f3f4f6;background:#f9fafb;">
+    <span style="font-weight:700;font-size:14px;color:#374151;">Your API Test Suites</span>
+    <span style="margin-left:auto;display:inline-flex;gap:8px;align-items:center;">
+      <span style="font-size:12px;border:1px solid #e5e7eb;border-radius:999px;padding:4px 8px;color:#374151;background:#ffffff;">40 tests</span>
+      <span style="font-size:12px;border:1px solid #bbf7d0;background:#ecfdf5;color:#065f46;border-radius:999px;padding:4px 8px;">Schema Coverage: 100%</span>
+    </span>
+  </div>
+
+  <!-- Body: two columns like the app -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+    <!-- Left: test list -->
+    <div style="padding:12px;border-right:1px solid #f3f4f6;">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+        <input type="text" value="Search test sets..." style="flex:1;border:1px solid #e5e7eb;border-radius:8px;padding:8px 10px;font-size:12px;color:#6b7280;background:#fafafa;" readonly/>
+      </div>
+
+      <!-- Faux rows -->
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:10px;margin-bottom:8px;background:#ffffff;">
+        Get current weather for Tokyo in imperial units <span style="float:right;font-size:12px;color:#6b7280;">✓</span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:10px;margin-bottom:8px;background:#ffffff;">
+        Get current weather for London in standard units <span style="float:right;font-size:12px;color:#6b7280;">✓</span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:10px;background:#ffffff;">
+        Get current weather for New York in metric units <span style="float:right;font-size:12px;color:#6b7280;">✓</span>
+      </div>
+    </div>
+
+    <!-- Right: selected test detail -->
+    <div style="padding:12px;">
+      <div style="font-weight:700;color:#374151;margin-bottom:8px;">Get current weather for Tokyo in imperial units</div>
+
+      <!-- Assertions -->
+      <div style="border:1px solid #e5e7eb;border-radius:12px;padding:10px;margin-bottom:10px;background:#ffffff;">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;">
+          <span style="height:10px;width:10px;border-radius:50%;background:#22c55e;display:inline-block;"></span>
+          <span style="font-size:13px;color:#065f46;font-weight:600;">STATUS CODE equals 200</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;">
+          <span style="height:10px;width:10px;border-radius:50%;background:#22c55e;display:inline-block;"></span>
+          <span style="font-size:13px;color:#065f46;font-weight:600;">JSON EQUAL "city" → "Tokyo"</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span style="height:10px;width:10px;border-radius:50%;background:#22c55e;display:inline-block;"></span>
+          <span style="font-size:13px;color:#065f46;font-weight:600;">JSON EQUAL "country" → "JP"</span>
+        </div>
+      </div>
+
+      <!-- Request preview -->
+      <div style="border:1px solid #e5e7eb;border-radius:12px;padding:10px;background:#0b1220;color:#e5e7eb;font-size:12.5px;line-height:1.7;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">
+GET /weather?q=Tokyo&units=imperial
+Host: api.openweathermap.org
+User-Agent: keploy
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer note -->
+  <div style="font-size:11px;color:#6b7280;padding:10px 12px;border-top:1px solid #f3f4f6;">
+    Preview from a sample project — your suite will reflect your endpoints and data.
+  </div>
+</div>
+
+<!-- Human reasons (short, skimmable) -->
+<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:12px 14px;margin:0 0 10px;">
+  <ul style="padding-left:18px;margin:0;line-height:1.8;">
+    <li class="sub" style="margin:0;"><strong>Start fast.</strong> Point at an endpoint; add a few cURLs or your OpenAPI if you have them.</li>
+    <li class="sub" style="margin:0;"><strong>Stay stable.</strong> We generate sensible assertions to cut flakes.</li>
+    <li class="sub" style="margin:0;"><strong>Live in CI.</strong> Status checks show up where you work.</li>
+  </ul>
+</div>
+
+<!-- Time to value -->
+<div class="bar-wrap" style="margin-top:8px;"><div class="bar" style="width:92%;"></div></div>
+<div class="bar-text">~2 minutes to first passing test</div>
+
+<!-- One major CTA -->
+<a href="https://app.keploy.io/api-testing/generate"
+   class="button"
+   style="display:inline-block;background:#f97316;border-radius:10px;padding:16px 28px;font-weight:700;font-size:15px;margin:16px 0 10px;color:#ffffff !important;text-decoration:none !important;">
+   Generate my tests
+</a>
+
+<!-- Social proof (tight, natural) -->
+<p class="sub" style="border-left:4px solid #f97316;padding-left:12px;margin:6px 0 0;">
+  “Clicked Generate, got a suite, and a data bug surfaced before merge. That would’ve been a hotfix.” — Priya, Eng Manager
+</p>
+
+<!-- Help (reply-only to keep focus on one CTA) -->
+<p class="sub" style="margin-top:10px;">
+  If setup takes longer than 3 minutes, reply “help” and we’ll finish it for you — free.
+</p>
+
+<!-- Centered Footer with icons and links -->
+<div class="footer" style="text-align:center; padding:24px 12px; font-family:'Inter',sans-serif; font-size:12px; color:#6b7280; margin-top:36px;">
+  Keploy &middot; Open-source, AI-powered testing for developers.<br /><br />
+
+  <a href="https://keploy.io" style="color:#6b7280; text-decoration:none; margin:0 8px; display:inline-flex; align-items:center;">
+    <!-- Globe Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#6b7280" viewBox="0 0 24 24" width="14" height="14" style="margin-right:4px;">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.93 6h-2.24c-.18-1.5-.63-2.87-1.27-4.02 1.59.47 2.94 1.56 3.51 3.02zM12 4c.7 1.11 1.25 2.59 1.47 4H10.5c.22-1.41.77-2.89 1.5-4zM4.26 15c-.17-.64-.26-1.31-.26-2s.09-1.36.26-2h3.48a17.7 17.7 0 0 0 0 4H4.26zm.81 2h2.24c.18 1.5.63 2.87 1.27 4.02A8.025 8.025 0 0 1 5.07 17zm2.24-10H5.07a8.025 8.025 0 0 1 3.51-3.02c-.64 1.15-1.09 2.52-1.27 4.02zM12 20c-.7-1.11-1.25-2.59-1.47-4h2.97c-.22 1.41-.77 2.89-1.5 4zm2.43-6h-4.86a15.6 15.6 0 0 1 0-4h4.86c.14.64.21 1.31.21 2s-.07 1.36-.21 2zm.1 6c.64-1.15 1.09-2.52 1.27-4.02h2.24a8.025 8.025 0 0 1-3.51 4.02zM17.74 15h-3.48a17.7 17.7 0 0 0 0-4h3.48c.17.64.26 1.31.26 2s-.09 1.36-.26 2z"/>
+    </svg>
+    keploy.io
+  </a>
+
+  <a href="https://twitter.com/keployio" style="color:#6b7280; text-decoration:none; margin:0 8px; display:inline-flex; align-items:center;">
+    <!-- Twitter Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#6b7280" viewBox="0 0 24 24" width="14" height="14" style="margin-right:4px;">
+      <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.24 4.24 0 0 0 1.85-2.34 8.49 8.49 0 0 1-2.69 1.03 4.21 4.21 0 0 0-7.17 3.84A11.94 11.94 0 0 1 3.16 4.6a4.2 4.2 0 0 0 1.3 5.62 4.19 4.19 0 0 1-1.91-.53v.05a4.21 4.21 0 0 0 3.38 4.13 4.2 4.2 0 0 1-1.9.07 4.22 4.22 0 0 0 3.93 2.92 8.45 8.45 0 0 1-5.23 1.8c-.34 0-.68-.02-1.02-.06a11.92 11.92 0 0 0 6.45 1.89c7.74 0 11.97-6.41 11.97-11.97 0-.18 0-.36-.01-.54A8.52 8.52 0 0 0 24 4.56a8.38 8.38 0 0 1-2.54.7z"/>
+    </svg>
+    @keployio
+  </a>
+
+  <a href="https://linkedin.com/company/keploy/" style="color:#6b7280; text-decoration:none; margin:0 8px; display:inline-flex; align-items:center;">
+    <!-- LinkedIn Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#6b7280" viewBox="0 0 24 24" width="14" height="14" style="margin-right:4px;">
+      <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.03-1.84-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66h-3.56V9h3.42v1.56h.05c.48-.9 1.65-1.84 3.4-1.84 3.63 0 4.3 2.39 4.3 5.5v6.23zM5.34 7.43a2.06 2.06 0 1 1 0-4.11 2.06 2.06 0 0 1 0 4.11zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.2.8 24 1.77 24h20.46c.97 0 1.77-.8 1.77-1.74V1.74C24 .78 23.2 0 22.23 0z"/>
+    </svg>
+    LinkedIn
+  </a>
+
+  <a href="https://github.com/keploy" style="color:#6b7280; text-decoration:none; margin:0 8px; display:inline-flex; align-items:center;">
+    <!-- GitHub Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#6b7280" viewBox="0 0 24 24" width="14" height="14" style="margin-right:4px;">
+      <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.32-1.75-1.32-1.75-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.84 2.8 1.31 3.48 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1-.32 3.3 1.23a11.48 11.48 0 0 1 6 0C17 6.57 18 6.9 18 6.9c.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.64-5.5 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5z"/>
+    </svg>
+    GitHub
+  </a>
+</div>
+
+</div>
+
+
+  </div>
+</body>
+
+</html>

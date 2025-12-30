@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keploy Bug Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8FAFC;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+/* Modern header with geometric design */
+.header {
+    position: relative;
+    background: linear-gradient(135deg, #FF6B00 0%, #FF8A3D 50%, #FFB37A 100%);
+    padding: 32px 40px;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Add geometric background elements */
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.08);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(15deg);
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-left {
+    flex: 1;
+}
+
+.header-right {
+    flex-shrink: 0;
+    opacity: 0.3;
+}
+
+.header .logo {
+    max-width: 160px;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1);
+}
+
+.header-title {
+    color: white;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 400px;
+}
+
+/* Abstract shape for header decoration */
+.header-shape {
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    transform: rotate(15deg);
+    position: relative;
+}
+
+.header-shape::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transform: rotate(-30deg);
+}
+
+/* Remove wave - replace with clean edge */
+.header-wave {
+    display: none;
+}
+
+/* Content block styling update */
+.header-content-block {
+    padding: 40px 40px ;
+    background: linear-gradient(180deg, #FAFBFC 0%, #FFFFFF 100%);
+}
+/* Dark-on-light text styles */
+.header-title-dark {
+    color: #1E293B;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.header-ps-primary-dark {
+    color: #0F172A;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.header-ps-secondary-dark {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 520px;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 640px) {
+    .header {
+        padding: 24px;
+        min-height: 160px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .header-right {
+        display: none;
+    }
+    
+    .header-title {
+        font-size: 24px;
+    }
+    
+    .header-subtitle {
+        font-size: 14px;
+        max-width: none;
+    }
+    
+    .header-content-block {
+        padding: 24px;
+    }
+}
+
+        
+        .logo {
+            max-width: 140px;
+            margin-bottom: 20px;
+        }
+        
+        .header-title {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 15px;
+        }
+        
+        .stats-bar {
+            display: flex;
+            gap: 16px;
+            padding: 24px 40px;
+            background: white;
+        }
+        
+        .stat-card {
+            flex: 1;
+            background: #F8FAFC;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 3px solid;
+        }
+        
+        .stat-card.bugs {
+            border-left-color: #FF6B00;
+        }
+        
+        .stat-card.tests {
+            border-left-color: #22C55E;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .stat-card.bugs .stat-value {
+            color: #FF6B00;
+        }
+        
+        .stat-card.tests .stat-value {
+            color: #22C55E;
+        }
+        
+        .stat-label {
+            color: #64748B;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        .content {
+            padding: 32px 40px;
+        }
+        
+        .section-title {
+            color: red;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-top:-12px;
+        }
+        
+        .bug-card {
+            background: #FAFAFA;
+            border: 1px solid #E2E8F0;
+            border-left: 3px solid #FF6B00;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .bug-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 16px;
+        }
+        
+        .bug-title-section {
+            flex: 1;
+        }
+        
+        .bug-number {
+            color: #94A3B8;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .bug-title {
+            color: #1E293B;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .action-button {
+            background: #FF6B03;
+            border: 1px solid #E2E8F0;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .bug-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .meta-label {
+            color: #94A3B8;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .meta-value {
+            color: #1E293B;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .meta-value.priority-high {
+            color: #DC2626;
+        }
+        
+        .meta-value.service {
+            color: #6366F1;
+        }
+        
+        .bug-description {
+            color: #64748B;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .ai-insight {
+            background: #FEF2F2;
+            border-radius: 6px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .ai-badge {
+            background: #FFE2E2;
+            color: red;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            height: fit-content;
+        }
+        
+        .ai-text {
+            color: #7F1E1D;
+            font-size: 13px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        .cta-section {
+            background: #F8FAFC;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 24px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #FF6B00;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .footer {
+            background: #F8FAFC;
+            padding: 24px 40px;
+            text-align: center;
+            border-top: 1px solid #E2E8F0;
+        }
+        
+        .footer-text {
+            color: #64748B;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .social-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .copyright {
+            color: #94A3B8;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 640px) {
+            .stats-bar {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 24px;
+            }
+            
+            .stats-bar {
+                padding: 16px 24px;
+            }
+            
+            .bug-meta {
+                grid-template-columns: 1fr;
+            }
+            
+            .bug-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<!-- HEADER: Modern design with geometric elements -->
+<div class="header">
+    <div class="header-content">
+        <div class="header-left">
+            <img
+                src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png"
+                alt="Keploy Logo"
+                class="logo"
+            />
+            <h1 class="header-title">Critical Issues Detected</h1>
+           
+        </div>
+        <div class="header-right">
+            <div class="header-shape"></div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT STARTS -->
+<div class="content header-content-block">
+    <p class="header-ps-primary-dark">
+        We found these bugs that you missed!!
+    </p>
+
+    <p class="header-ps-secondary-dark">
+        Keploy simulated real traffic on
+        <strong>{{event.appName}}</strong> and surfaced edge cases
+        that could have impacted your users in production.
+    </p>
+</div>
+
+
+        
+        <div class="stats-bar">
+            <div class="stat-card bugs">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Buggy Scenarios</div>
+            </div>
+            <div class="stat-card tests">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Test Flows simulated</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section-title">Issues that need your ATTENTION</div>
+            
+            <div class="bug-card">
+                <div class="bug-header">
+                    <div class="bug-title-section">
+                        <div class="bug-number">BUG #1</div>
+                        <div class="bug-title">Create Owner – 404 Not Found</div>
+                    </div>
+                </div>
+                  <div class="ai-insight">
+                    <div class="ai-badge">AI</div>
+                    <div class="ai-text">This could cause cascading failures in downstream services. Immediate attention recommended.</div>
+                </div>
+                <br>
+                
+                <div class="bug-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Method Name</div>
+                        <div class="meta-value">GET</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Urgency</div>
+                        <div class="meta-value priority-high">High</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Step Number</div>
+                        <div class="meta-value">3</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Service</div>
+                        <div class="meta-value service">{{event.appName}}</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Created At</div>
+                        <div class="meta-value">Dec 30, 2025 14:23 IST</div>
+                    </div>
+                </div>
+                
+                              <a href="#" class="action-button">Resolve</a>
+
+              
+            </div>
+            
+            <div class="bug-card">
+                <div class="bug-header">
+                    <div class="bug-title-section">
+                        <div class="bug-number">BUG #2</div>
+                        <div class="bug-title">Add Pet – Schema Mismatch</div>
+                    </div>
+                </div>
+                   <div class="ai-insight">
+                    <div class="ai-badge">AI</div>
+                    <div class="ai-text">Indicates a backward-incompatible response change that may break client applications.</div>
+                </div>
+                <br>
+                <div class="bug-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Method Name</div>
+                        <div class="meta-value">GET</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Urgency</div>
+                        <div class="meta-value priority-high">High</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Step Number</div>
+                        <div class="meta-value">2</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Service</div>
+                        <div class="meta-value service">{{event.appName}}</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Created At</div>
+                        <div class="meta-value">Dec 30, 2025 14:23 IST</div>
+                    </div>
+                </div>
+                
+                            <a href="#" class="action-button">Resolve</a>
+
+             
+            </div>
+            
+            <div class="bug-card">
+                <div class="bug-header">
+                    <div class="bug-title-section">
+                        <div class="bug-number">BUG #3</div>
+                        <div class="bug-title">Verify Visit Is Deleted – Assertion Failure</div>
+                    </div>
+                </div>
+                  <div class="ai-insight">
+                    <div class="ai-badge">AI</div>
+                    <div class="ai-text">Possible incomplete cleanup logic or eventual consistency issues in your data layer.</div>
+                </div>
+                <br>
+                
+                <div class="bug-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Method Name</div>
+                        <div class="meta-value">PUT</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Urgency</div>
+                        <div class="meta-value priority-high">High</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Step Number</div>
+                        <div class="meta-value">2</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Service</div>
+                        <div class="meta-value service">{{event.appName}}</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Created At</div>
+                        <div class="meta-value">Dec 30, 2025 14:23 IST</div>
+                    </div>
+                </div>
+            
+                                  <a href="#" class="action-button">Resolve</a>
+
+            </div>
+            
+            <div class="cta-section">
+                <a href="#" class="cta-button">View All Bugs & Run Tests →</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-text">Keploy · Open-source, AI-powered testing for developers</div>
+            <div class="social-links">
+                <a href="#">X</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">YouTube</a>
+            </div>
+            <div class="copyright">© 2025 Keploy. All rights reserved.</div>
+        </div>
+    </div>
+</body>
+</html>

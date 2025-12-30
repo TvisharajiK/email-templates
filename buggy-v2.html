@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keploy Bug Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8FAFC;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+ /* Header becomes visual-only */
+.header {
+    position: relative;
+    background: linear-gradient(135deg, #FF6B00 0%, #FF8A3D 55%, #FFB37A 100%);
+    padding: 28px 40px 0;
+    overflow: hidden;
+}
+
+.header .logo {
+    max-width: 140px;
+    margin-bottom: 24px;
+}
+
+/* Wave stays the same */
+.header-wave {
+    width: 100%;
+    line-height: 0;
+}
+
+/* Content block immediately after header */
+.header-content-block {
+    padding-top: 36px;  
+}
+/* Dark-on-light text styles */
+.header-title-dark {
+    color: #1E293B;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.header-ps-primary-dark {
+    color: #0F172A;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.header-ps-secondary-dark {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 520px;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .header {
+        padding: 24px 24px 0;
+    }
+}
+
+        
+        .logo {
+            max-width: 140px;
+            margin-bottom: 20px;
+        }
+        
+        .header-title {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 15px;
+        }
+        
+        .stats-bar {
+            display: flex;
+            gap: 16px;
+            padding: 24px 40px;
+            background: white;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        
+        .stat-card {
+            flex: 1;
+            background: #F8FAFC;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 3px solid;
+        }
+        
+        .stat-card.bugs {
+            border-left-color: #FF6B00;
+        }
+        
+        .stat-card.tests {
+            border-left-color: #22C55E;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .stat-card.bugs .stat-value {
+            color: #FF6B00;
+        }
+        
+        .stat-card.tests .stat-value {
+            color: #22C55E;
+        }
+        
+        .stat-label {
+            color: #64748B;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        .content {
+            padding: 32px 40px;
+        }
+        
+        .section-title {
+            color: #1E293B;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        
+        .bug-card {
+            background: #FAFAFA;
+            border: 1px solid #E2E8F0;
+            border-left: 3px solid #FF6B00;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .bug-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 16px;
+        }
+        
+        .bug-title-section {
+            flex: 1;
+        }
+        
+        .bug-number {
+            color: #94A3B8;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .bug-title {
+            color: #1E293B;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .action-button {
+            background: white;
+            border: 1px solid #E2E8F0;
+            color: #64748B;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .bug-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .meta-label {
+            color: #94A3B8;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .meta-value {
+            color: #1E293B;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .meta-value.priority-high {
+            color: #DC2626;
+        }
+        
+        .meta-value.service {
+            color: #6366F1;
+        }
+        
+        .bug-description {
+            color: #64748B;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .ai-insight {
+            background: #FFF7ED;
+            border-radius: 6px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .ai-badge {
+            background: #FF6B00;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            height: fit-content;
+        }
+        
+        .ai-text {
+            color: #92400E;
+            font-size: 13px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        .cta-section {
+            background: #F8FAFC;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 24px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #FF6B00;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .footer {
+            background: #F8FAFC;
+            padding: 24px 40px;
+            text-align: center;
+            border-top: 1px solid #E2E8F0;
+        }
+        
+        .footer-text {
+            color: #64748B;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .social-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .copyright {
+            color: #94A3B8;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 640px) {
+            .stats-bar {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 24px;
+            }
+            
+            .header {
+                padding: 24px;
+            }
+            
+            .stats-bar {
+                padding: 16px 24px;
+            }
+            
+            .bug-meta {
+                grid-template-columns: 1fr;
+            }
+            
+            .bug-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<!-- HEADER: brand only -->
+<div class="header">
+    <img
+        src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png"
+        alt="Keploy Logo"
+        class="logo"
+    />
+
+    <!-- Wave -->
+  <div class="header-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 160" preserveAspectRatio="none" width="100%" height="160">
+        <!-- mid layer -->
+        <path
+            d="M0,80 C240,120 480,40 720,60 960,80 1200,120 1440,90 L1440,160 L0,160 Z"
+            fill="#FFD8B3"
+            opacity="0.5"
+        />
+        <!-- front layer -->
+        <path
+            d="M0,100 C300,40 520,140 760,110 1000,80 1200,60 1440,90 L1440,160 L0,160 Z"
+            fill="#FFFFFF"
+        />
+    </svg>
+</div>
+
+</div>
+
+<!-- CONTENT STARTS -->
+<div class="content header-content-block">
+    <h1 class="header-title-dark">Critical Issues Detected</h1>
+
+    <p class="header-ps-primary-dark">
+        P.S. These bugs never showed up in your tests.
+    </p>
+
+    <p class="header-ps-secondary-dark">
+        Keploy replayed real traffic against
+        <strong>{{event.appName}}</strong> and surfaced edge cases
+        that only appear under production conditions.
+    </p>
+</div>
+
+
+        
+        <div class="stats-bar">
+            <div class="stat-card bugs">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Bugs Found</div>
+            </div>
+            <div class="stat-card tests">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Tests Ready</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section-title">High-Impact Issues in Your APIs</div>
+            
+            <div class="bug-card">
+                <div class="bug-header">
+                    <div class="bug-title-section">
+                        <div class="bug-number">BUG #1</div>
+                        <div class="bug-title">Create Owner – 404 Not Found</div>
+                    </div>
+                    <a href="#" class="action-button">Resolve</a>
+                </div>
+                
+                <div class="bug-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Priority</div>
+                        <div class="meta-value">-</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Urgency</div>
+                        <div class="meta-value priority-high">High</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Assigned To</div>
+                        <div class="meta-value">Unassigned</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Service</div>
+                        <div class="meta-value service">{{event.appName}}</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Created At</div>
+                        <div class="meta-value">Dec 30, 2025 14:23 IST</div>
+                    </div>
+                </div>
+                
+                <div class="bug-description">
+                    The response payload deviated from the expected schema during test replay. Required fields were missing, potentially breaking dependent services.
+                </div>
+                <div class="ai-insight">
+                    <div class="ai-badge">AI</div>
+                    <div class="ai-text">This could cause cascading failures in downstream services. Immediate attention recommended.</div>
+                </div>
+            </div>
+            
+            <div class="bug-card">
+                <div class="bug-header">
+                    <div class="bug-title-section">
+                        <div class="bug-number">BUG #2</div>
+                        <div class="bug-title">Add Pet – Schema Mismatch</div>
+                    </div>
+                    <a href="#" class="action-button">Resolve</a>
+                </div>
+                
+                <div class="bug-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Priority</div>
+                        <div class="meta-value">-</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Urgency</div>
+                        <div class="meta-value priority-high">High</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Assigned To</div>
+                        <div class="meta-value">Unassigned</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Service</div>
+                        <div class="meta-value service">{{event.appName}}</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Created At</div>
+                        <div class="meta-value">Dec 30, 2025 14:23 IST</div>
+                    </div>
+                </div>
+                
+                <div class="bug-description">
+                    The response payload deviated from the expected schema during test replay. Required fields were missing, potentially breaking dependent services.
+                </div>
+                <div class="ai-insight">
+                    <div class="ai-badge">AI</div>
+                    <div class="ai-text">Indicates a backward-incompatible response change that may break client applications.</div>
+                </div>
+            </div>
+            
+            <div class="bug-card">
+                <div class="bug-header">
+                    <div class="bug-title-section">
+                        <div class="bug-number">BUG #3</div>
+                        <div class="bug-title">Verify Visit Is Deleted – Assertion Failure</div>
+                    </div>
+                    <a href="#" class="action-button">Resolve</a>
+                </div>
+                
+                <div class="bug-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Priority</div>
+                        <div class="meta-value">-</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Urgency</div>
+                        <div class="meta-value priority-high">High</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Assigned To</div>
+                        <div class="meta-value">Unassigned</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Service</div>
+                        <div class="meta-value service">{{event.appName}}</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Created At</div>
+                        <div class="meta-value">Dec 30, 2025 14:23 IST</div>
+                    </div>
+                </div>
+                
+                <div class="bug-description">
+                    The verification step expected a deleted entity, but the resource remained accessible during execution.
+                </div>
+                <div class="ai-insight">
+                    <div class="ai-badge">AI</div>
+                    <div class="ai-text">Possible incomplete cleanup logic or eventual consistency issues in your data layer.</div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <a href="#" class="cta-button">View All Bugs & Run Tests →</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-text">Keploy · Open-source, AI-powered testing for developers</div>
+            <div class="social-links">
+                <a href="#">X</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">YouTube</a>
+            </div>
+            <div class="copyright">© 2025 Keploy. All rights reserved.</div>
+        </div>
+    </div>
+</body>
+</html>

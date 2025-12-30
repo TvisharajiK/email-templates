@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your first Keploy tests are waiting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Base ===== */
+    body{margin:0;padding:0;font-family:'Inter',sans-serif;background:#f8fafc;color:#1f2937;}
+    .wrapper{max-width:640px;margin:0 auto;background:#ffffff;padding:48px 36px;border-radius:18px;
+             box-shadow:0 6px 20px rgba(0,0,0,0.08);}
+    a{color:#f97316;text-decoration:none;font-weight:600;}
+    /* ===== Head ===== */
+    .logo{width:120px;}
+    .headline{font-size:26px;font-weight:600;color:#f97316;margin:24px 0 14px;}
+    .sub{font-size:16px;line-height:1.6;margin:0 0 24px;color:#374151;}
+    /* ===== Hero ===== */
+    .hero{width:100%;height:auto;border-radius:14px;display:block;margin:8px 0 24px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.04);}
+    /* ===== Progress bar ===== */
+    .bar-wrap{background:#f3f4f6;border-radius:10px;margin:24px 0;height:14px;overflow:hidden;}
+    .bar{background:#f97316;width:80%;height:100%;border-radius:10px;}
+    .bar-text{font-size:13px;font-weight:600;color:#374151;margin:6px 0 0;text-align:right;}
+    /* ===== CTA ===== */
+    .button{display:inline-block;background:#f97316;color:#ffffff;border-radius:10px;padding:16px 28px;
+            font-weight:600;font-size:15px;margin:16px 0 32px;}
+    /* ===== Footer ===== */
+    .footer{font-size:12px;color:#6b7280;margin-top:40px;text-align:left;}
+    .footer a{color:#6b7280;font-weight:500;margin:0 8px;}
+    /* ===== Responsive ===== */
+    @media(max-width:480px){
+      .wrapper{padding:32px 22px;}
+      .headline{font-size:22px;}
+      .button{width:100%;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+<!-- Logo -->
+<img class="logo" src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo"/>
+
+<!-- Eyebrow -->
+<div style="display:inline-block;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700;margin-top:6px;">
+  Welcome back — let’s ship fewer hotfixes
+</div>
+
+<!-- Headline -->
+<div class="headline" style="margin-top:14px;">Make flaky tests cry.</div>
+
+<!-- Subhead (natural tone) -->
+<p class="sub" style="font-size:17px;margin-top:4px;">
+  Keploy turns the API calls you already make into a useful test suite — with assertions, stable mocks, and CI checks. Setup is quick.
+</p>
+
+<!-- UI-style Preview (static, not a second CTA) -->
+<div style="border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;margin:10px 0 18px;">
+  <div style="background:#f9fafb;padding:10px 12px;display:flex;gap:14px;align-items:center;">
+    <span style="height:8px;width:8px;border-radius:50%;background:#f97316;display:inline-block;"></span>
+    <span style="font-weight:600;font-size:14px;color:#374151;">Generate API Test Scenarios</span>
+    <span style="margin-left:auto;font-size:12px;background:#eef2ff;color:#4338ca;border-radius:999px;padding:4px 8px;">Warp speed</span>
+  </div>
+  <div style="padding:14px 14px 4px;">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+      <span style="font-size:12px;padding:8px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#ffffff;">API Base URL</span>
+      <span style="font-size:12px;padding:8px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#ffffff;">Sample cURLs</span>
+      <span style="font-size:12px;padding:8px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#ffffff;">Swagger</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="border:1px dashed #e5e7eb;border-radius:10px;padding:12px;">
+        <p style="margin:0 0 6px;font-size:12px;color:#6b7280;">1 · Base Test Endpoint</p>
+        <div style="display:flex;gap:8px;align-items:center;border:1px solid #e5e7eb;border-radius:8px;padding:10px;background:#fafafa;">
+          <span style="height:8px;width:8px;border-radius:50%;background:#9ca3af;display:inline-block;"></span>
+          <span style="font-size:13px;color:#6b7280;">api.example.com</span>
+        </div>
+      </div>
+      <div style="border:1px dashed #e5e7eb;border-radius:10px;padding:12px;">
+        <p style="margin:0 0 6px;font-size:12px;color:#6b7280;">2 · Add cURL / Postman</p>
+        <div style="font-size:12px;color:#6b7280;background:#fafafa;border:1px solid #e5e7eb;border-radius:8px;padding:10px;height:48px;display:flex;align-items:center;">
+          Paste 3–5 working calls (optional)
+        </div>
+      </div>
+      <div style="grid-column:1 / -1;border:1px dashed #e5e7eb;border-radius:10px;padding:12px;">
+        <p style="margin:0 0 6px;font-size:12px;color:#6b7280;">3 · Swagger / OpenAPI</p>
+        <div style="font-size:12px;color:#6b7280;background:#fafafa;border:1px solid #e5e7eb;border-radius:8px;padding:10px;height:48px;display:flex;align-items:center;">
+          Drop in YAML/JSON (optional)
+        </div>
+      </div>
+    </div>
+    <div style="margin:14px 0 6px;text-align:center;">
+      <span style="display:inline-block;background:linear-gradient(90deg,#fb923c,#f97316);opacity:.9;border-radius:10px;padding:12px 18px;color:#fff;font-weight:700;font-size:14px;cursor:default;">
+        Generate API Tests
+      </span>
+      <div style="font-size:11px;color:#6b7280;margin-top:6px;">(Preview — click the real button below)</div>
+    </div>
+  </div>
+</div>
+
+<!-- Friendly, skimmable benefits -->
+<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:14px 14px 6px;margin:0 0 12px;">
+  <ul style="padding-left:18px;margin:0;line-height:1.8;">
+    <li class="sub" style="margin:0;"><strong>Start where you are.</strong> Point at an endpoint; we use real traffic.</li>
+    <li class="sub" style="margin:0;"><strong>Less flake, more signal.</strong> Stable mocks and sensible assertions.</li>
+    <li class="sub" style="margin:0;"><strong>CI gets smarter.</strong> Status checks and PR comments are built in.</li>
+  </ul>
+</div>
+
+<!-- Time to value -->
+<div class="bar-wrap" style="margin-top:8px;"><div class="bar" style="width:88%;"></div></div>
+<div class="bar-text">About 2 minutes to first passing test</div>
+
+<!-- One major CTA -->
+<a href="https://app.keploy.io/api-testing/generate"
+   class="button"
+   style="display:inline-block;background:#f97316;border-radius:10px;padding:16px 28px;font-weight:600;font-size:15px;margin:16px 0 10px;color:#ffffff !important;text-decoration:none !important;">
+   Generate my tests
+</a>
+
+<!-- Social proof (natural) -->
+<p class="sub" style="border-left:4px solid #f97316;padding-left:12px;margin:6px 0 0;">
+  “We switched it on, generated a suite, and caught a data-loss bug the same day.”
+  <br/><span style="font-size:14px;">— Priya, Eng Manager (Fintech)</span>
+</p>
+
+<!-- Help + guarantee -->
+<p class="sub" style="margin-top:10px;">
+  If setup takes longer than 3 minutes, reply “help” and we’ll finish it for you — free. Or jump into our
+  <a href="https://join.slack.com/t/keploy/shared_invite/zt-357qqm9b5-PbZRVu3Yt2rJIa6ofrwWNg">Slack</a> or book a
+  <a href="https://calendar.app.google/cXVaj6hbMUjvmrnt9">15-min setup</a>.
+</p>
+
+<!-- Footer (unchanged) -->
+<div class="footer">
+  Keploy · Open-source, AI-powered testing for developers.<br/>
+  <a href="https://keploy.io">keploy.io</a> |
+  <a href="https://twitter.com/keployio">@keployio</a> |
+  <a href="https://linkedin.com/company/keploy/">LinkedIn</a>
+</div>
+
+
+  </div>
+</body>
+
+</html>
