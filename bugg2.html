@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 4 New Critical Issues Detected - Keploy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #FFF5F0 0%, #FFFBF5 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: white;
+            overflow: hidden;
+        }
+        
+        /* Side stripe design */
+        .wrapper {
+            position: relative;
+            padding-left: 8px;
+        }
+        
+        .stripe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            background: linear-gradient(180deg, #FF6B00 0%, #DC2626 50%, #FF6B00 100%);
+        }
+        
+        /* Compact header with side-by-side layout */
+        .header {
+            background: white;
+            padding: 40px 48px 32px 48px;
+            border-bottom: 3px solid #FF6B00;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .logo {
+            max-width: 130px;
+        }
+        
+        .status-pill {
+            background: #FEE2E2;
+            color: #DC2626;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border: 2px solid #DC2626;
+        }
+        
+        .header-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+        
+        .header-left h1 {
+            color: #0F172A;
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        
+        .header-left h1 .highlight {
+            color: #FF6B00;
+        }
+        
+        .header-left p {
+            color: #64748B;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Stats boxes - horizontal layout */
+        .stats-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .stat-box {
+            background: #FFF7ED;
+            border: 2px solid #FDBA74;
+            border-radius: 10px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #9A3412;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: #EA580C;
+        }
+        
+        /* Warning banner - full width colored section */
+        .warning-banner {
+            background: linear-gradient(90deg, #FEF2F2 0%, #FEE2E2 100%);
+            padding: 24px 48px;
+            border-top: 1px solid #FECACA;
+            border-bottom: 1px solid #FECACA;
+        }
+        
+        .warning-content {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .warning-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+        
+        .warning-text h3 {
+            color: #991B1B;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .warning-text p {
+            color: #7F1D1D;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .warning-text strong {
+            color: #DC2626;
+            font-weight: 700;
+        }
+        
+        /* Content area - spacious with side padding */
+        .content {
+            padding: 48px 48px 40px 48px;
+        }
+        
+        .section-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 2px dashed #E5E7EB;
+        }
+        
+        .section-intro h2 {
+            color: #1E293B;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-intro p {
+            color: #64748B;
+            font-size: 14px;
+        }
+        
+        /* Card grid layout - 2 columns for variety */
+        .bugs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        /* Alternating card styles */
+        .bug-card {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bug-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #FF6B00 0%, #F97316 100%);
+        }
+        
+        .bug-card.alt {
+            background: #FAFAFA;
+            border-color: #D1D5DB;
+        }
+        
+        .bug-card.alt::before {
+            background: linear-gradient(90deg, #DC2626 0%, #EF4444 100%);
+        }
+        
+        /* Horizontal header layout */
+        .bug-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        
+        .bug-id-section {
+            flex: 1;
+        }
+        
+        .bug-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #64748B;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .bug-title {
+            color: #0F172A;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .severity-tag {
+            background: #DC2626;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        
+        /* Inline meta info */
+        .bug-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meta-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+        
+        .meta-icon.method {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+        
+        .meta-icon.step {
+            background: #E0E7FF;
+            color: #4338CA;
+        }
+        
+        .meta-icon.service {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+        
+        .meta-text {
+            font-size: 13px;
+            color: #475569;
+        }
+        
+        .meta-text strong {
+            color: #1E293B;
+            font-weight: 600;
+        }
+        
+        /* AI insight - inline design */
+        .ai-insight {
+            background: #F5F3FF;
+            border-left: 4px solid #8B5CF6;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .ai-insight-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .ai-icon {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .ai-label {
+            color: #6D28D9;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .ai-insight p {
+            color: #5B21B6;
+            font-size: 13px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        /* Action buttons - minimal style */
+        .bug-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background: #FF6B00;
+            color: white;
+            border: 2px solid #FF6B00;
+        }
+        
+        .btn-primary:hover {
+            background: #EA580C;
+            border-color: #EA580C;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #64748B;
+            border: 2px solid #E2E8F0;
+        }
+        
+        .btn-secondary:hover {
+            background: #F8FAFC;
+            border-color: #CBD5E1;
+        }
+        
+        /* Bottom CTA - large centered button */
+        .cta-section {
+            background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+            border: 3px solid #FB923C;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .cta-content h3 {
+            color: #1E293B;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        
+        .cta-content p {
+            color: #64748B;
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B00 0%, #DC2626 100%);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 14px rgba(255, 107, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+        }
+        
+        /* Footer - clean and minimal */
+        .footer {
+            background: #F8FAFC;
+            padding: 32px 48px;
+            text-align: center;
+            border-top: 1px solid #E2E8F0;
+        }
+        
+        .footer p {
+            color: #64748B;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #64748B;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .footer-links a:hover {
+            color: #FF6B00;
+        }
+        
+        .copyright {
+            color: #94A3B8;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .header {
+                padding: 32px 24px 24px 24px;
+            }
+            
+            .header-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .warning-banner {
+                padding: 20px 24px;
+            }
+            
+            .content {
+                padding: 32px 24px;
+            }
+            
+            .bug-header {
+                flex-direction: column;
+            }
+            
+            .bug-meta {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .bug-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .footer {
+                padding: 24px;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="stripe"></div>
+            
+            <!-- Compact Header -->
+            <div class="header">
+                <div class="header-top">
+                    <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy Logo" class="logo" />
+                    <div class="status-pill">Follow-Up Alert</div>
+                </div>
+                
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1><span class="highlight">4 Additional Bugs</span> Detected in {{event.appName}}</h1>
+                        <p>Our continuous testing uncovered more critical issues affecting core functionality. Combined with previous findings, you now have 7 bugs requiring immediate review.</p>
+                    </div>
+                    
+                    <div class="stats-boxes">
+                        <div class="stat-box">
+                            <span class="stat-label">New Bugs</span>
+                            <span class="stat-value">4</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Total</span>
+                            <span class="stat-value">7</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Tests</span>
+                            <span class="stat-value">28</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Warning Banner -->
+            <div class="warning-banner">
+                <div class="warning-content">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-text">
+                        <h3>Production Impact Assessment</h3>
+                        <p>These newly identified issues can affect <strong>your user's security, and performance</strong>. Unresolved, they pose significant risk to user experience and data integrity.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="content">
+                <div class="section-intro">
+                    <h2>Latest Discoveries</h2>
+                    <p>4 critical issues found in your latest test cycle</p>
+                </div>
+                
+                <div class="bugs-grid">
+                    <!-- Bug 4 -->
+                    <div class="bug-card">
+                        <div class="bug-header">
+                            <div class="bug-id-section">
+                                <div class="bug-number">BUG #4</div>
+                                <h3 class="bug-title">Database Connection Pool Exhaustion – 500 Internal Error</h3>
+                            </div>
+                            <div class="severity-tag">Critical</div>
+                        </div>
+                        
+                        <div class="bug-meta">
+                            <div class="meta-item">
+                                <div class="meta-icon method">M</div>
+                                <span class="meta-text"><strong>POST</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-icon step">#</div>
+                                <span class="meta-text">Step <strong>5</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-icon service">⚙</div>
+                                <span class="meta-text"><strong>{{event.appName}}</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-insight">
+                            <div class="ai-insight-header">
+                                <div class="ai-icon">AI</div>
+                                <span class="ai-label">Root Cause Analysis</span>
+                            </div>
+                            <p>Connection pool limit reached under simulated load. Missing connection cleanup or improper timeout configuration detected. High risk of cascading failures.</p>
+                        </div>
+                        
+                        <div class="bug-actions">
+                            <a href="#" class="btn btn-primary">Investigate</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Bug 5 -->
+                    <div class="bug-card alt">
+                        <div class="bug-header">
+                            <div class="bug-id-section">
+                                <div class="bug-number">BUG #5</div>
+                                <h3 class="bug-title">Race Condition in Payment Processing – Duplicate Charges Risk</h3>
+                            </div>
+                            <div class="severity-tag">Critical</div>
+                        </div>
+                        
+                        <div class="bug-meta">
+                            <div class="meta-item">
+                                <div class="meta-icon method">M</div>
+                                <span class="meta-text"><strong>PUT</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-icon step">#</div>
+                                <span class="meta-text">Step <strong>7</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-icon service">⚙</div>
+                                <span class="meta-text"><strong>{{event.appName}}</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-insight">
+                            <div class="ai-insight-header">
+                                <div class="ai-icon">AI</div>
+                                <span class="ai-label">Financial Risk Alert</span>
+                            </div>
+                            <p>Critical race condition in concurrent payment requests. Missing idempotency key validation could result in double-charging customers. Immediate patching required.</p>
+                        </div>
+                        
+                        <div class="bug-actions">
+                            <a href="#" class="btn btn-primary">Investigate</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Bug 6 -->
+                    <div class="bug-card">
+                        <div class="bug-header">
+                            <div class="bug-id-section">
+                                <div class="bug-number">BUG #6</div>
+                                <h3 class="bug-title">Authentication Token Expiry Not Validated – Security Breach</h3>
+                            </div>
+                            <div class="severity-tag">Critical</div>
+                        </div>
+                        
+                        <div class="bug-meta">
+                            <div class="meta-item">
+                                <div class="meta-icon method">M</div>
+                                <span class="meta-text"><strong>GET</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-icon step">#</div>
+                                <span class="meta-text">Step <strong>1</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-icon service">⚙</div>
+                                <span class="meta-text"><strong>{{event.appName}}</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-insight">
+                            <div class="ai-insight-header">
+                                <div class="ai-icon">AI</div>
+                                <span class="ai-label">Security Vulnerability</span>
+                            </div>
+                            <p>Expired tokens accepted for authenticated requests. Creates significant security vulnerability allowing unauthorized access. Requires immediate security patch deployment.</p>
+                        </div>
+                        
+                        <div class="bug-actions">
+                            <a href="#" class="btn btn-primary">Investigate</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Bug 7 -->
+                    <div class="bug-card alt">
+                        <div class="bug-header">
+                            <div class="bug-id-section">
+                                <div class="bug-number">BUG #7</div>
+                                <h3 class="bug-title">Memory Leak in Cache Service – Progressive Performance Degradation</h3>
+                            </div>
+                            <div class="severity-tag">Critical</div>
+                        </div>
+                        
+                        <div class="bug-meta">
+                            <div class="meta-item">
+                                <div class="meta-icon method">M</div>
+                                <span class="meta-text"><strong>DELETE</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-icon step">#</div>
+                                <span class="meta-text">Step <strong>9</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-icon service">⚙</div>
+                                <span class="meta-text"><strong>{{event.appName}}</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-insight">
+                            <div class="ai-insight-header">
+                                <div class="ai-icon">AI</div>
+                                <span class="ai-label">Performance Impact</span>
+                            </div>
+                            <p>Cache entries not properly cleared, causing memory growth over time. Will eventually cause service crashes requiring restarts. Pattern suggests missing cleanup in error handlers.</p>
+                        </div>
+                        
+                        <div class="bug-actions">
+                            <a href="#" class="btn btn-primary">Investigate</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA -->
+                <div class="cta-section">
+                    <div class="cta-content">
+                        <h3>Review All 7 Critical Issues</h3>
+                        <p>Access your complete bug dashboard to prioritize, assign, and track fixes</p>
+                        <a href="#" class="cta-button">Open Dashboard →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <p><strong>Keploy</strong> · AI-powered testing that catches what traditional tests miss</p>
+                <div class="footer-links">
+                    <a href="#">X (Twitter)</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">YouTube</a>
+                </div>
+                <p class="copyright">© 2025 Keploy. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
