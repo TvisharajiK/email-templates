@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #FFF5EB 0%, #FFFBF7 50%, #FFF8F3 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 660px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(255, 107, 0, 0.12);
+            border: 1px solid rgba(255, 107, 0, 0.1);
+        }
+        
+        /* Decorative Header */
+        .header {
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8533 50%, #FFA066 100%);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+        }
+        
+        /* Geometric decorations */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 280px;
+            height: 280px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+        
+        /* Decorative patterns */
+        .pattern-dots {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.15;
+        }
+        
+        .pattern-dots::before,
+        .pattern-dots::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .pattern-dots::before {
+            top: 0;
+            left: 0;
+            box-shadow: 
+                20px 0 white,
+                40px 0 white,
+                0 20px white,
+                20px 20px white,
+                40px 20px white,
+                0 40px white,
+                20px 40px white,
+                40px 40px white;
+        }
+        
+        .diagonal-stripe {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.15),
+                rgba(255, 255, 255, 0.15) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 48px 48px 56px 48px;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+        
+        .logo {
+            max-width: 140px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .ci-badge {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .header-title {
+            color: white;
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 17px;
+            line-height: 1.6;
+            font-weight: 500;
+            max-width: 480px;
+        }
+        
+        /* Decorative wave transition */
+        .wave-divider {
+            position: relative;
+            height: 40px;
+            background: white;
+        }
+        
+        .wave-divider svg {
+            position: absolute;
+            top: -39px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+        }
+        
+        /* Content area with elegant spacing */
+        .content {
+            padding: 40px 48px 48px 48px;
+        }
+        
+        .intro-text {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 36px;
+        }
+        
+        .intro-text strong {
+            color: #1E293B;
+            font-weight: 600;
+        }
+        
+        /* Elegant section header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+            border: 2px solid #FDBA74;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .section-title {
+            color: #0F172A;
+            font-size: 19px;
+            font-weight: 700;
+        }
+        
+        /* Beautiful code block */
+        .code-wrapper {
+            background: #1E293B;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 16px rgba(30, 41, 59, 0.15);
+            border: 1px solid #334155;
+        }
+        
+        .code-header {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .code-title {
+            color: #94A3B8;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .copy-btn {
+            background: rgba(255, 107, 0, 0.2);
+            color: #FF6B00;
+            border: 1px solid rgba(255, 107, 0, 0.4);
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 107, 0, 0.3);
+            border-color: rgba(255, 107, 0, 0.6);
+        }
+        
+        .code-block {
+            padding: 24px;
+            overflow-x: auto;
+            background: #1E293B;
+        }
+        
+        .code-block code {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #E2E8F0;
+            display: block;
+            white-space: pre;
+        }
+        
+        /* Elegant note box */
+        .note-box {
+            background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+            border: 2px solid #FB923C;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .note-box::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(251, 146, 60, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .note-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .note-icon {
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .note-title {
+            color: #9A3412;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .note-text {
+            color: #7C2D12;
+            font-size: 14px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .note-text strong {
+            color: #9A3412;
+            font-weight: 700;
+        }
+        
+        /* Elegant checklist */
+      
+        
+        .checklist-title {
+            color: #1E293B;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checklist-title::before {
+            content: '✓';
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #E2E8F0;
+            transition: all 0.2s ease;
+        }
+        
+        .checklist-item:hover {
+            border-color: #FDBA74;
+            box-shadow: 0 2px 8px rgba(255, 107, 0, 0.08);
+        }
+        
+        .checklist-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .checkbox-icon {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #CBD5E1;
+            border-radius: 6px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            background: white;
+        }
+        
+        .checklist-text {
+            flex: 1;
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .checklist-text strong {
+            color: #1E293B;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 36px 0 0 0;
+            border-top: 2px dashed #E5E7EB;
+        }
+        
+        .cta-text {
+            color: #64748B;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%);
+            color: white;
+            padding: 15px 36px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 16px rgba(255, 107, 0, 0.25);
+        }
+        
+        .cta-button:hover {
+            box-shadow: 0 6px 24px rgba(255, 107, 0, 0.35);
+            transform: translateY(-1px);
+        }
+        
+        /* Elegant Footer */
+        .footer {
+            background: linear-gradient(135deg, #FAFBFC 0%, #F8FAFC 100%);
+            padding: 32px 48px;
+            text-align: center;
+            border-top: 1px solid #E2E8F0;
+        }
+        
+        .footer-logo {
+            max-width: 100px;
+            margin-bottom: 16px;
+            opacity: 0.7;
+        }
+        
+        .footer-text {
+            color: #64748B;
+            font-size: 13px;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #FF6B00;
+        }
+        
+        .copyright {
+            color: #94A3B8;
+            font-size: 12px;
+        }
+        /* Global responsiveness hardening */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Prevent horizontal overflow on small screens */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure container never overflows viewport */
+.container {
+    width: 100%;
+}
+
+/* Code blocks: force safe wrapping on very small screens */
+.code-block pre,
+.code-block code {
+    max-width: 100%;
+    overflow-x: auto;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .container {
+                border-radius: 16px;
+            }
+            
+            .header {
+                min-height: 240px;
+            }
+            
+            .header::before {
+                top: -60px;
+                right: -60px;
+                width: 200px;
+                height: 200px;
+            }
+            
+            .header::after {
+                bottom: -40px;
+                left: -40px;
+                width: 150px;
+                height: 150px;
+            }
+            
+            .pattern-dots {
+                top: 24px;
+                left: 24px;
+                width: 80px;
+                height: 80px;
+            }
+            
+            .header-content {
+                padding: 32px 24px 40px 24px;
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+            
+            .logo {
+                max-width: 110px;
+            }
+            
+            .ci-badge {
+                padding: 6px 14px;
+                font-size: 10px;
+            }
+            
+            .header-title {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+            
+            .header-subtitle {
+                font-size: 15px;
+                max-width: 100%;
+            }
+            
+            .wave-divider {
+                height: 30px;
+            }
+            
+            .wave-divider svg {
+                top: -29px;
+                height: 30px;
+            }
+            
+            .content {
+                padding: 32px 24px 40px 24px;
+            }
+            
+            .intro-text {
+                font-size: 14px;
+                margin-bottom: 28px;
+            }
+            
+            .section-header {
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            
+            .section-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 17px;
+            }
+            
+            .code-wrapper {
+                border-radius: 10px;
+                margin-bottom: 24px;
+            }
+            
+            .code-header {
+                padding: 12px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .code-title {
+                font-size: 11px;
+            }
+            
+            .copy-btn {
+                width: 100%;
+                text-align: center;
+                padding: 8px 16px;
+            }
+            
+            .code-block {
+                padding: 16px;
+            }
+            
+            .code-block code,
+            .code-block pre {
+                font-size: 11px;
+                line-height: 1.6;
+            }
+            
+            .note-box {
+                padding: 16px 20px;
+                margin-bottom: 28px;
+                border-radius: 10px;
+            }
+            
+            .note-box::before {
+                width: 80px;
+                height: 80px;
+                top: -15px;
+                right: -15px;
+            }
+            
+            .note-header {
+                gap: 8px;
+                margin-bottom: 8px;
+            }
+            
+            .note-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 14px;
+            }
+            
+            .note-title {
+                font-size: 12px;
+            }
+            
+            .note-text {
+                font-size: 13px;
+            }
+            
+            .checklist {
+                padding: 20px;
+                margin-bottom: 28px;
+                border-radius: 10px;
+            }
+            
+            .checklist-title {
+                font-size: 15px;
+                margin-bottom: 16px;
+            }
+            
+            .checklist-title::before {
+                width: 24px;
+                height: 24px;
+                font-size: 14px;
+            }
+            
+            .checklist-item {
+                gap: 12px;
+                margin-bottom: 12px;
+                padding: 14px;
+                border-radius: 8px;
+            }
+            
+            .checkbox-icon {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .checklist-text {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+            
+            .checklist-text strong {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            
+            .checklist-text code {
+                font-size: 11px;
+                word-break: break-all;
+                display: inline-block;
+                max-width: 100%;
+            }
+            
+            .cta-section {
+                padding: 28px 0 0 0;
+            }
+            
+            .cta-text {
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+            
+            .cta-button {
+                padding: 13px 28px;
+                font-size: 14px;
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+            
+            .footer {
+                padding: 28px 24px;
+            }
+            
+            .footer-logo {
+                max-width: 80px;
+                margin-bottom: 12px;
+            }
+            
+            .footer-text {
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .footer-links a {
+                font-size: 12px;
+            }
+            
+            .copyright {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Decorative Header -->
+        <div class="header">
+            <div class="pattern-dots"></div>
+            <div class="diagonal-stripe"></div>
+            
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy" class="logo" />
+                    <span class="ci-badge">CI/CD Ready</span>
+                </div>
+                <h1 class="header-title">Run {{event.appName}} Tests in Your CI Pipeline</h1>
+                <p class="header-subtitle">Add AI-powered API test automation to GitHub Actions in under 5 minutes. Simple, powerful, and ready to go.</p>
+            </div>
+        </div>
+        
+        <!-- Wave Divider -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 40" preserveAspectRatio="none">
+                <path d="M0,20 Q300,0 600,20 T1200,20 L1200,40 L0,40 Z" fill="white"/>
+            </svg>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <p class="intro-text">
+                Hi there! 👋<br><br>
+                Your test suite for <strong>{{event.appName}}</strong> is ready. Now let's automate it so every commit gets tested automatically. Here's your ready-to-use GitHub Actions workflow:
+            </p>
+            
+            <div class="section-header">
+                <div class="section-icon">📄</div>
+                <h2 class="section-title">Your Existing GitHub Actions Workflow</h2>
+            </div>
+            
+            <div class="code-wrapper">
+                <div class="code-header">
+                    <span class="code-title">.github/workflows/ci.yml</span>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                <div class="code-block">
+                  <pre style="background:#1E293B;color:#E2E8F0;padding:16px;border-radius:8px;font-family:monospace;font-size:12px;overflow:auto;">
+  - name: Install Keploy CLI
+    run: |
+      curl --silent -L https://keploy.io/ent/install.sh | bash
+      
+  - name: Run Keploy Test Suite
+    run: |
+      {{event.codeSnippet.snippet}}
+</pre>
+
+                </div>
+            </div>
+            
+            <div class="note-box">
+                <div class="note-header">
+                    <div class="note-icon">🔐</div>
+                    <span class="note-title">Important</span>
+                </div>
+                <p class="note-text">
+                    Add your <strong>KEPLOY_API_KEY</strong> as a GitHub secret before running the workflow.<br>
+                    Go to: <strong>Your Repo → Settings → Secrets and variables → Actions → New repository secret</strong>
+                </p>
+            </div>
+            
+            <div class="section-header">
+                <div class="section-icon">✓</div>
+                <h2 class="section-title">Setup Checklist</h2>
+            </div>
+            
+            <div class="checklist">
+                <div class="checklist-title">Complete these steps to get started</div>
+                
+                <div class="checklist-item">
+                   
+                    <div class="checklist-text">
+                        <strong>Create the workflow file</strong>
+                        Add the code above to <code>.github/workflows/keploy.yml</code> in your repository
+                    </div>
+                </div>
+                
+                <div class="checklist-item">
+                   
+                    <div class="checklist-text">
+                        <strong>Add your API key as a secret</strong>
+                        Store KEPLOY_API_KEY in your GitHub repository secrets (never commit it to code)
+                    </div>
+                </div>
+                
+                <div class="checklist-item">
+                    
+                    <div class="checklist-text">
+                        <strong>Update the base-path if needed</strong>
+                        Replace with your actual API endpoint URL for testing
+                    </div>
+                </div>
+                
+                <div class="checklist-item">
+                 
+                    <div class="checklist-text">
+                        <strong>Commit and push</strong>
+                        Your tests will run automatically on the next commit
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <p class="cta-text">Need help or have questions?</p>
+                <a href="https://keploy.io/docs/running-keploy/api-testing-cicd/" class="cta-button">View Full Documentation</a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy" class="footer-logo" />
+            <p class="footer-text">Keploy · AI-powered API testing</p>
+            <div class="footer-links">
+                <a href="https://keploy.io/docs">Documentation</a>
+                <a href="https://github.com/keploy/keploy">GitHub</a>
+                <a href="https://join.slack.com/t/keploy/shared_invite/zt-357qqm9b5-PbZRVu3Yt2rJIa6ofrwWNg">Slack Community</a>
+            </div>
+            <p class="copyright">© 2025 Keploy Inc.</p>
+        </div>
+    </div>
+</body>
+</html>

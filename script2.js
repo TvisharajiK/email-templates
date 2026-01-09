@@ -204,28 +204,23 @@ function buildRetentionMatrix() {
 
   for (const key in userMap) {
     const parts = key.split("|");
-    let earliestDate = "";
-    
-    // Find the earliest date across all weeks for this user
-    for (let i = 0; i < weeks.length; i++) {
-      const w = weeks[i];
-      const cell = userMap[key][w] || { passed: 0, failed: 0, date: "" };
-      
-      if (cell.date) {
-        if (!earliestDate || cell.date < earliestDate) {
-          earliestDate = cell.date;
-        }
-      }
-    }
+let dateValue = "";
 
-    const row = [parts[0], parts[1], earliestDate];
+const row = [parts[0], parts[1], ""];
+
 
     for (let i = 0; i < weeks.length; i++) {
       const w = weeks[i];
-      const cell = userMap[key][w] || { passed: 0, failed: 0, date: "" };
+     const cell = userMap[key][w] || { passed: 0, failed: 0, date: "" };
 
-      row.push(cell.passed || 0);
-      row.push(cell.failed || 0);
+if (!dateValue && cell.date) {
+  dateValue = cell.date;
+  row[2] = dateValue;
+}
+
+row.push(cell.passed || 0);
+row.push(cell.failed || 0);
+
     }
 
     output.push(row);
