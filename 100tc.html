@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 20 New Test Suites Ready for {{appName}}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F9FAFB;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Header with gradient and badge */
+        .header {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A855F7 100%);
+            padding: 40px 40px 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .logo {
+            max-width: 120px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .new-badge {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .header-title {
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Stats cards - eye-catching metrics */
+        .stats-section {
+            padding: 32px 40px;
+            background: linear-gradient(180deg, #FAFBFC 0%, #FFFFFF 100%);
+            border-bottom: 2px solid #F1F5F9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .stat-card {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 100%);
+        }
+        
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #6366F1;
+            margin-bottom: 6px;
+        }
+        
+        .stat-label {
+            color: #64748B;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Content area */
+        .content {
+            padding: 40px 40px 32px 40px;
+        }
+        
+        .intro-text {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+        
+        .intro-text strong {
+            color: #1E293B;
+            font-weight: 600;
+        }
+        
+        /* Highlight box */
+        .highlight-box {
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+            border: 2px solid #7DD3FC;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .highlight-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #0C4A6E;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .highlight-icon {
+            font-size: 24px;
+        }
+        
+        .highlight-text {
+            color: #075985;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        /* Test suite preview section */
+        .section-header {
+            color: #0F172A;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #F1F5F9;
+        }
+        
+        .test-suites-preview {
+            margin-bottom: 32px;
+        }
+        
+        .suite-card {
+            background: #FAFAFA;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        
+        .suite-card:hover {
+            border-color: #8B5CF6;
+            background: white;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+        }
+        
+        .suite-info {
+            flex: 1;
+        }
+        
+        .suite-name {
+            color: #1E293B;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .suite-meta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .meta-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748B;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .meta-icon {
+            font-size: 14px;
+        }
+        
+        .suite-status {
+            background: #DBEAFE;
+            color: #1E40AF;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Coverage insights */
+        .coverage-section {
+            background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+            border: 2px solid #FDBA74;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .coverage-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .coverage-title {
+            color: #9A3412;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .coverage-percentage {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #EA580C;
+        }
+        
+        .coverage-list {
+            list-style: none;
+        }
+        
+        .coverage-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #7C2D12;
+            font-size: 14px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(251, 146, 60, 0.3);
+        }
+        
+        .coverage-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .check-icon {
+            color: #EA580C;
+            font-size: 16px;
+        }
+        
+        /* Progress tracker */
+        .progress-section {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .progress-title {
+            color: #1E293B;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .progress-count {
+            color: #6366F1;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .progress-bar {
+            background: #E5E7EB;
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 100%);
+            height: 100%;
+            width: 40%;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 30%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 100%);
+        }
+        
+        .progress-milestones {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+        }
+        
+        .milestone {
+            text-align: center;
+        }
+        
+        .milestone-value {
+            color: #64748B;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        /* CTA Section - compelling */
+        .cta-section {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-title {
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .cta-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #6366F1;
+            padding: 16px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #F8FAFC;
+            padding: 28px 40px;
+            text-align: center;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        .footer-text {
+            color: #64748B;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            color: #6366F1;
+        }
+        
+        .copyright {
+            color: #94A3B8;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .container {
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 32px 24px 40px 24px;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .logo {
+                max-width: 100px;
+            }
+            
+            .header-title {
+                font-size: 26px;
+            }
+            
+            .header-subtitle {
+                font-size: 15px;
+            }
+            
+            .stats-section {
+                padding: 24px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .stat-value {
+                font-size: 32px;
+            }
+            
+            .content {
+                padding: 32px 24px;
+            }
+            
+            .intro-text {
+                font-size: 14px;
+            }
+            
+            .section-header {
+                font-size: 18px;
+            }
+            
+            .suite-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .suite-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .coverage-section,
+            .highlight-box,
+            .progress-section {
+                padding: 20px;
+            }
+            
+            .coverage-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .coverage-percentage {
+                font-size: 28px;
+            }
+            
+            .cta-section {
+                padding: 28px 24px;
+            }
+            
+            .cta-title {
+                font-size: 22px;
+            }
+            
+            .cta-button {
+                width: 100%;
+                padding: 14px 32px;
+            }
+            
+            .footer {
+                padding: 24px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="header-top">
+                    <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/keploy-logo+(1).png" alt="Keploy" class="logo" />
+                    <span class="new-badge">NEW SUITES</span>
+                </div>
+                <h1 class="header-title">20 New Test Suites Ready for {{event.appName}}</h1>
+                <p class="header-subtitle">Your AI-generated test coverage is expanding. Unlock these suites to discover potential issues and strengthen your application.</p>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">20</div>
+                    <div class="stat-label">New Suites</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{event.testCount}}</div>
+                    <div class="stat-label">Test Cases</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{event.endpointsCovered}}</div>
+                    <div class="stat-label">Endpoints</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <p class="intro-text">
+                Hi there! 👋<br><br>
+                Great news! We've generated <strong>20 new test suites</strong> specifically for <strong>{{event.appName}}</strong>. These tests cover edge cases, error scenarios, and integration flows that aren't typically caught by manual testing.
+            </p>
+            
+            <!-- Highlight Box -->
+            <div class="highlight-box">
+                <div class="highlight-title">
+                    <span class="highlight-icon">🎯</span>
+                    <span>Why These Tests Matter</span>
+                </div>
+                <p class="highlight-text">
+                    Our AI analyzed your API patterns and identified <strong>{{event.criticalScenarios}}</strong> critical scenarios you haven't tested yet. These suites can catch bugs before they reach production.
+                </p>
+            </div>
+            
+            <!-- Test Suite Preview -->
+            <h2 class="section-header">📋 What's Inside</h2>
+            <div class="test-suites-preview">
+                <div class="suite-card">
+                    <div class="suite-info">
+                        <div class="suite-name">Authentication & Authorization Flows</div>
+                        <div class="suite-meta">
+                            <span class="meta-badge">
+                                <span class="meta-icon">🧪</span>
+                                <span>{{event.suite1TestCount}} tests</span>
+                            </span>
+                            <span class="meta-badge">
+                                <span class="meta-icon">🎯</span>
+                                <span>{{event.suite1Endpoints}} endpoints</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="suite-status">Unlocked</span>
+                </div>
+                
+                <div class="suite-card">
+                    <div class="suite-info">
+                        <div class="suite-name">Error Handling & Edge Cases</div>
+                        <div class="suite-meta">
+                            <span class="meta-badge">
+                                <span class="meta-icon">🧪</span>
+                                <span>{{event.suite2TestCount}} tests</span>
+                            </span>
+                            <span class="meta-badge">
+                                <span class="meta-icon">🎯</span>
+                                <span>{{event.suite2Endpoints}} endpoints</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="suite-status">Unlocked</span>
+                </div>
+                
+                <div class="suite-card">
+                    <div class="suite-info">
+                        <div class="suite-name">Data Validation & Schema Checks</div>
+                        <div class="suite-meta">
+                            <span class="meta-badge">
+                                <span class="meta-icon">🧪</span>
+                                <span>{{event.suite3TestCount}} tests</span>
+                            </span>
+                            <span class="meta-badge">
+                                <span class="meta-icon">🎯</span>
+                                <span>{{event.suite3Endpoints}} endpoints</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="suite-status">Unlocked</span>
+                </div>
+            </div>
+            
+            <!-- Coverage Insights -->
+            <div class="coverage-section">
+                <div class="coverage-header">
+                    <div class="coverage-title">🎯 Coverage Insights</div>
+                    <div class="coverage-percentage">+{{event.coverageIncrease}}%</div>
+                </div>
+                <ul class="coverage-list">
+                    <li class="coverage-item">
+                        <span class="check-icon">✓</span>
+                        <span>Comprehensive authentication flows including token refresh and expiry</span>
+                    </li>
+                    <li class="coverage-item">
+                        <span class="check-icon">✓</span>
+                        <span>Boundary value testing for all input parameters</span>
+                    </li>
+                    <li class="coverage-item">
+                        <span class="check-icon">✓</span>
+                        <span>Database constraint validation and error responses</span>
+                    </li>
+                    <li class="coverage-item">
+                        <span class="check-icon">✓</span>
+                        <span>Rate limiting and concurrent request handling</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <div class="progress-title">📊 Your Testing Progress</div>
+                    <div class="progress-count">40 of 100 suites unlocked</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-milestones">
+                    <div class="milestone">
+                        <div class="milestone-value">0</div>
+                    </div>
+                    <div class="milestone">
+                        <div class="milestone-value">40 ✓</div>
+                    </div>
+                    <div class="milestone">
+                        <div class="milestone-value">100</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h3 class="cta-title">View Your 20 New Test Suites</h3>
+                    <p class="cta-subtitle">Run these tests now to catch potential issues before they affect users</p>
+                    <a href="{{event.dashboardUrl}}" class="cta-button">Open Dashboard →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">Keploy · AI-powered API testing</p>
+            <div class="footer-links">
+                <a href="https://keploy.io/docs">Documentation</a>
+                <a href="https://github.com/keploy/keploy">GitHub</a>
+                <a href="https://join.slack.com/t/keploy/shared_invite/zt-357qqm9b5-PbZRVu3Yt2rJIa6ofrwWNg">Slack Community</a>
+            </div>
+            <p class="copyright">© 2025 Keploy Inc.</p>
+        </div>
+    </div>
+</body>
+</html>
